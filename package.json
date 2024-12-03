@@ -4,7 +4,9 @@
   "description": "This is a group project for the DVOPS subject. Group members: Daryl, Hilman, Kenneth, Xave",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "backend-test": "nyc --nycrc-path .nycrc-backend mocha test/createStudent.test.js",
+    "frontend-test": "nyc --nycrc-path .nycrc-frontend mocha"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +17,11 @@
     "express": "^4.21.1",
     "fs": "^0.0.1-security",
     "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^11.0.1",
+    "nyc": "^17.1.0"
   }
 }
