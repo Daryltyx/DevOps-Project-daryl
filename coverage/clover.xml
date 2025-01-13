@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1736799542507" clover="3.2.0">
-  <project timestamp="1736799542507" name="All files">
+<coverage generated="1736799670243" clover="3.2.0">
+  <project timestamp="1736799670243" name="All files">
     <metrics statements="19" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1" elements="22" coveredelements="19" complexity="0" loc="19" ncloc="19" packages="1" files="1" classes="1"/>
     <file name="createStudentApp.js" path="C:\Users\Admin\Downloads\DevOps-Project-daryl-final code\public\js\createStudentApp.js">
       <metrics statements="19" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
