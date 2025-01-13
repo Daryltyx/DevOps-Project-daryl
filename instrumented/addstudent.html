@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DVOPS - Student Management Web App</title>
     <style>
         /* Body and background styling */
@@ -15,6 +14,7 @@
             background-position: center;
             background-repeat: no-repeat;
             height: 100vh;
+            /* Ensures the background fills the full viewport height */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,8 +29,10 @@
             padding: 20px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.1);
+            /* Translucent white */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
+            /* Adds a blur effect */
             text-align: center;
         }
 
@@ -87,11 +89,6 @@
         #responseMessage {
             margin-top: 20px;
             color: #ccc;
-            visibility: hidden; /* Initially hidden */
-        }
-
-        #responseMessage:empty {
-            visibility: hidden;
         }
     </style>
 </head>
@@ -115,25 +112,9 @@
 
         <!-- Display response message -->
         <p id="responseMessage"></p>
-    </div>
+    </div>  
 
-    <!-- Ensure correct path to JavaScript -->
-    <script src="/createStudentApp.js"></script>
-
-    <script>
-        // Debugging script to confirm JavaScript is loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            const form = document.getElementById("createStudentForm");
-            const studentIDField = document.getElementById("studentID");
-            const nameField = document.getElementById("name");
-
-            if (form && studentIDField && nameField) {
-                console.log("Form and input fields are ready for interaction.");
-            } else {
-                console.error("Form or input fields are missing.");
-            }
-        });
-    </script>
+    <script src="/js/createStudentApp.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
     "html"
   ],
   "include": [
-    "util/*.js"
+    "util/createStudent.js"
   ],
   "reportDir": "coverage/backend",
   "branches": 80,

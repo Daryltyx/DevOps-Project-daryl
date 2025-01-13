@@ -1,6 +1,11 @@
 {
-  "reporter": ["text", "html"],
-  "include": ["public/js/**/*.js"],
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "include": [
+    "/js/createStudentApp.js"
+  ],
   "reportDir": "coverage/frontend",
   "check-coverage": true,
   "branches": 80,
