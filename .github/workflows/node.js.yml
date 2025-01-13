@@ -10,22 +10,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Step 1: Checkout the code from GitHub Repo
     - name: Checkout code from GitHub Repo
       uses: actions/checkout@v3
 
+    # Step 2: Setup Node.js in Ubuntu
     - name: Setup Node.js in Ubuntu
       uses: actions/setup-node@v3
       with:
         node-version: 18
 
-    - name: Remove existing node_modules folder from cloned project
-      run: rm -rf /home/runner/work/DevOps-Project-daryl/DevOps-Project-daryl/node_modules/*
-
-    - name: Install dependencies based on package.json
+    # Step 3: Install dependencies
+    - name: Install dependencies
       run: npm install
 
+    # Step 4: Debug: List all files
+    - name: Debug: List all files
+      run: ls -R
+
+    # Step 5: Run backend tests
     - name: Run backend tests and generate coverage
       run: npm run backend-test
 
+    # Step 6: Instrument the frontend code
+    - name: Instrument frontend code for coverage
+      run: cp -R public instrumented & npx nyc instrument public instrumented
+
+    # Step 7: Run frontend tests
     - name: Run frontend tests and generate coverage
-      run: npm run frontend-test
+      run: rm -rf .nyc_output & npx nyc --nycrc-path .nycrc-frontend cypress run
+
+    # Step 8: Debug: Check coverage files
+    - name: Debug: Verify coverage files
+      run: ls -R coverage
