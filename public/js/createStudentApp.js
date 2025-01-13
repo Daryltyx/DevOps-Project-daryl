@@ -21,7 +21,7 @@ document.getElementById("createStudentForm").addEventListener("submit", async fu
         if (response.ok) {
             const result = await response.json();
             // Display success message
-            responseMessageElement.textContent = result.message || "Student created successfully.";
+            responseMessageElement.textContent = result.message;
             responseMessageElement.style.color = "green";
 
             // Clear the form inputs if the student was created successfully
@@ -29,7 +29,7 @@ document.getElementById("createStudentForm").addEventListener("submit", async fu
         } else {
             // Handle non-200 responses
             const errorResult = await response.json();
-            responseMessageElement.textContent = errorResult.error || "An error occurred.";
+            responseMessageElement.textContent = errorResult.error;
             responseMessageElement.style.color = "red";
         }
     } catch (error) {

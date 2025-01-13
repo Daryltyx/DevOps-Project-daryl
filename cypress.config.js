@@ -1,37 +1,41 @@
-const { defineConfig } = require('cypress');
-const { spawn } = require('child_process');
-
+const { defineConfig } = require("cypress");
+const { spawn } = require("child_process");
 let server;
 let baseUrl;
-
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      on('task', {
+      require("@cypress/code-coverage/task")(on, config);
+      on("task", {
         startServer() {
           return new Promise((resolve, reject) => {
+            // Check if the server is already running
             if (server) {
               resolve(baseUrl);
-              return;
             }
-            server = spawn('node', ['index-test.js']);
-            server.stdout.on('data', (data) => {
-              const output = data.toString();
-              console.log(output);
-              if (output.includes('Student Management System is running at')) {
-                baseUrl = 'http://localhost:5050';
-                resolve(baseUrl);
+            server = spawn("node", ["-r", "nyc", "index-test.js"]);
+            server.stdout.on("data", (data) => {
+              console.log(data.toString()); // Log the output for debugging
+              if (data.toString().includes("Student Management System is running at")) {
+                const baseUrlPrefix = "Student Management System is running at";
+                const startIndex = data.toString().indexOf(baseUrlPrefix);
+                if (startIndex !== -1) {
+                  baseUrl = data
+                    .toString()
+                    .substring(startIndex + baseUrlPrefix.length)
+                    .trim();
+                  resolve(baseUrl);
+                }
               }
             });
-            server.stderr.on('data', (err) => {
-              reject(err.toString());
+            server.stderr.on("data", (data) => {
+              reject(data);
             });
           });
         },
         stopServer() {
           if (server) {
             server.kill();
-            server = null;
           }
           return null;
         },
@@ -39,4 +43,4 @@ module.exports = defineConfig({
       return config;
     },
   },
-});
+})

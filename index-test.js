@@ -14,11 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve static files from the "instrumented" folder
-app.use(express.static(path.join(__dirname, "instrumented")));
+app.use(express.static("./instrumented"));
 
 // Route to serve the `addstudent.html` file explicitly
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "instrumented", "addstudent.html"));
+  res.sendFile(path.join(__dirname, "/instrumented/", "addstudent.html"));
 });
 
 // POST /students: Add a new student
