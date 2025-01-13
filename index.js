@@ -15,12 +15,12 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Import leave application routes from leaveapp.js
-const leaveAppRoutes = require("./util/leaveapp");
+const leaveAppRoutes = require("./Util/leaveapp");
 app.use("/leave", leaveAppRoutes);
 
 // Serve search.js from the util directory
 app.get("/util/search.js", (req, res) => {
-  res.sendFile(path.join(__dirname, "util", "search.js"));
+  res.sendFile(path.join(__dirname, "Util", "search.js"));
 });
 
 // Serve db.json from the data directory
@@ -29,7 +29,7 @@ app.get("/data/db.json", (req, res) => {
 });
 
 // Import and use the create student route
-const createStudentRoute = require("./util/createStudent");
+const createStudentRoute = require("./Util/createStudent");
 app.use("/", createStudentRoute);
 
 // Default route to serve the main HTML file
