@@ -42,13 +42,18 @@ describe("Create Student Frontend Tests", () => {
   });
 
   it("should display an error for duplicate student ID", () => {
-    // Generate a unique student ID and add it first
-    const duplicateStudentID = "12345";
+    // Generate a unique student ID to avoid database conflicts
+    const duplicateStudentID = `ID-${Date.now()}`;
 
     // Add the first student with the duplicate ID
     cy.get("#studentID").clear().type(duplicateStudentID);
     cy.get("#name").clear().type("John Doe");
     cy.get("form#createStudentForm button[type='submit']").click();
+
+    // Verify success message for first addition
+    cy.get("#responseMessage", { timeout: 5000 })
+      .should("be.visible")
+      .and("contain.text", "Student created successfully");
 
     // Attempt to add the same student again
     cy.get("#studentID").clear().type(duplicateStudentID);
