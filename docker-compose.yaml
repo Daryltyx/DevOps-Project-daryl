@@ -1,0 +1,9 @@
+services:
+  build-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: daryltay151106/project-docker-img:latest
+    container_name: project-docker-container
+    ports:
+      - "8000:5050"
