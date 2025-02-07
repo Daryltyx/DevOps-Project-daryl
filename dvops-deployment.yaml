@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvops-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dvops-app
+  template:
+    metadata:
+      labels:
+        app: dvops-app
+    spec:
+      containers:
+      - name: dvops-container
+        image: daryltay151106/project-docker-img:latest
+        ports:
+        - containerPort: 5050
