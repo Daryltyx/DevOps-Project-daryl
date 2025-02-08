@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const statusMonitor = require("express-status-monitor");
-const logger = require("./Util/logger"); // Importing Winston logger
+const logger = require("./logger"); // Importing Winston logger
 
 const app = express();
 const PORT = process.env.PORT || 5050;
