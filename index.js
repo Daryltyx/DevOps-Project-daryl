@@ -4,20 +4,23 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const statusMonitor = require("express-status-monitor");
-const logger = require("./logger"); // Importing Winston logger
+const logger = require("./Util/logger"); // Importing Winston logger
 
 const app = express();
 const PORT = process.env.PORT || 5050;
 const dbPath = path.join(__dirname, "utils/db.json");
+
+// ✅ 1. Place Status Monitor Middleware BEFORE all routes
+app.use(statusMonitor()); 
+app.get("/status", statusMonitor().pageRoute); // ✅ Explicitly expose the status page
 
 // Middleware setup
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-app.use(statusMonitor());
 
-// Logging middleware (non-blocking)
+// Logging all requests
 app.use((req, res, next) => {
   logger.info(`Incoming Request: ${req.method} ${req.url}`);
   next();
@@ -92,7 +95,7 @@ app.put("/api/attendance/:attendanceID", (req, res) => {
   }
 });
 
-// Global error handler (Non-blocking logging)
+// Global error handler
 app.use((err, req, res, next) => {
   logger.error(`Error: ${err.message}`);
   res.status(500).json({ error: "Internal Server Error" });
