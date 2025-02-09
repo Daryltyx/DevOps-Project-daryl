@@ -2,4 +2,7 @@
 info: Student Management System is running at http://localhost:5050 {"timestamp":"2025-02-08T11:53:59.496Z"}
 info: Incoming Request: GET /socket.io/?EIO=3&transport=polling&t=PJbQDAl {"timestamp":"2025-02-08T11:53:59.759Z"}
 info: Shutting down server... {"timestamp":"2025-02-08T11:54:15.121Z"}
-warn: Forced shutdown due to timeout. {"timestamp":"2025-02-08T11:54:18.131Z"}
+warn: Forced shutdown due to timeout. {"timestamp":"2025-02-08T11:54:18.131Z"}info: Student Management System is running at http://localhost:5050 {"timestamp":"2025-02-08T14:01:14.340Z"}
+info: Shutting down server... {"timestamp":"2025-02-08T14:08:30.591Z"}
+info: Student Management System is running at http://localhost:5050 {"timestamp":"2025-02-09T04:19:47.155Z"}
+info: Student Management System is running at http://localhost:5050 {"timestamp":"2025-02-09T05:13:09.734Z"}
